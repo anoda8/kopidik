@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('la.css') }}">
 
   @livewireStyles
 </head>
@@ -28,6 +29,7 @@
   <div class="content-wrapper">
     {{ $slot }}
   </div>
+
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
@@ -49,6 +51,7 @@
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
+
 </div>
 <!-- ./wrapper -->
 

@@ -88,4 +88,14 @@
             </div>
         </div>
     </div>
+    <div class="loader" wire:loading wire:target="cekData">
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+    </div>
+    <div class="loader" wire:loading wire:target="import">
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+    </div>
 </div>

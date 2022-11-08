@@ -33,6 +33,7 @@ class AmbilDataDapodik extends Component
 
     public function cekData($item_data)
     {
+        $this->clearState();
         if(count($this->data_holder) == 0){
             $dapo = $this->dapodikSync;
             $this->current_item_data = $item_data;

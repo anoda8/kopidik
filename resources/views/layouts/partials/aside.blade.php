@@ -90,15 +90,32 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                <i class="fa fa-database nav-icon"></i>
-                <p>Data Pembelajaran</p>
+                <a href="{{route('admin.master.pembelajaran')}}" class="nav-link {{request()->is('admin/master-pembelajaran') ? 'active' : ''}}">
+                    <i class="fa fa-database nav-icon"></i>
+                    <p>Data Pembelajaran</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="pages/forms/validation.html" class="nav-link">
                 <i class="fa fa-database nav-icon"></i>
                 <p>Data Ekstrakulikuler</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item {{request()->is('admin/kesiswaan*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{request()->is('admin/kesiswaan*') ? 'active' : ''}}">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+                Kesiswaan
+                <i class="fas fa-angle-left right"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('admin.kesiswaan.daftarnama')}}" class="nav-link {{request()->is('admin/kesiswaan-daftar-nama') ? 'active' : ''}}">
+                    <i class="fa fa-database nav-icon"></i>
+                    <p>Daftar Nama</p>
                 </a>
             </li>
             </ul>
