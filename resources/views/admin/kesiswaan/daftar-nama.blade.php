@@ -36,8 +36,12 @@
                                 <td class="text-center">{{ $kelas->jurusan_id_str }}</td>
                                 <td>{{ $kelas->kurikulum_id_str }}</td>
                                 <td>{{ $kelas->ptk_id_str }}</td>
-                                <td>{{ $kelas->anggota_rombel->count() }}</td>
-                                <td></td>
+                                <td class="text-center">{{ $kelas->anggota_rombel->count() }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary">
+                                        <i class="fa fa-print"></i>
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -165,9 +165,8 @@ class AmbilDataDapodik extends Component
             foreach($dataHolder as $key => $inner){
                 if($key == 'anggota_rombel'){
                     foreach($inner as $anggotaRombel){
-                        \App\Models\DataAnggotaRombel::updateOrCreate([
-                            'anggota_rombel_id' => $anggotaRombel['anggota_rombel_id']
-                        ], $anggotaRombel);
+                        $anggotaRombel['anggota_rombel_id'] = $dataHolder['rombongan_belajar_id'];
+                        \App\Models\DataAnggotaRombel::create($anggotaRombel);
                     }
                 }
 
