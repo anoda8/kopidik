@@ -2,12 +2,31 @@
 
 namespace App\Http\Controllers\Admin\Kesiswaan;
 
+use App\Models\DataKelas;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DaftarNama extends Component
 {
+    use WithPagination;
+
+    public $kata_kunci = null;
+    public $perpage = 10;
+
     public function render()
     {
-        return view('admin.kesiswaan.daftar-nama');
+        $kataKunci = "%".$this->kata_kunci."%";
+        $kelases = DataKelas::with('anggota_rombel')->where(function($query) {
+            $query->where('jenis_rombel_str', 'Kelas');
+        })->where(function($query) use ($kataKunci){
+            $query->where('nama', 'LIKE', $kataKunci)->orWhere('jurusan_id_str', 'LIKE', $kataKunci)
+            ->orWhere('ptk_id_str', 'LIKE', $kataKunci);
+        })->orderBy('nama', 'ASC');
+        if($this->kata_kunci != null){
+            $kelases = $kelases->get();
+        }else{
+            $kelases = $kelases->paginate($this->perpage);
+        }
+        return view('admin.kesiswaan.daftar-nama',['kelases' => $kelases]);
     }
 }

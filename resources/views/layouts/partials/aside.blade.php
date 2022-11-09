@@ -103,25 +103,33 @@
             </li>
             </ul>
         </li>
+        <li class="nav-header">LAYANAN</li>
         <li class="nav-item {{request()->is('admin/kesiswaan*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{request()->is('admin/kesiswaan*') ? 'active' : ''}}">
             <i class="nav-icon fas fa-users"></i>
-            <p>
-                Kesiswaan
-                <i class="fas fa-angle-left right"></i>
-            </p>
+                <p>
+                    Kesiswaan
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{route('admin.kesiswaan.daftarnama')}}" class="nav-link {{request()->is('admin/kesiswaan-daftar-nama') ? 'active' : ''}}">
-                    <i class="fa fa-database nav-icon"></i>
-                    <p>Daftar Nama</p>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.kesiswaan.daftarnama')}}" class="nav-link {{request()->is('admin/kesiswaan-daftar-nama') ? 'active' : ''}}">
+                        <i class="fa fa-list-ul nav-icon"></i>
+                        <p>Daftar Nama</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="fa fa-envelope-open nav-icon"></i>
+                        <p>Surat Keterangan</p>
+                    </a>
+                </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+        <li class="nav-header">KELUAR</li>
+        <li class="nav-item nav-logout">
+            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();var result = confirm('Apakah anda yakin akan keluar ?'); if(result){document.getElementById('logout-form').submit();}">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>Logout</p>
             </a>

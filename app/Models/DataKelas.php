@@ -12,4 +12,9 @@ class DataKelas extends Model
     protected $guarded = ['id'];
 
     protected $table = 'erp_data_kelas';
+
+    public function anggota_rombel()
+    {
+        return $this->hasMany(DataAnggotaRombel::class, 'anggota_rombel_id', 'rombongan_belajar_id');
+    }
 }

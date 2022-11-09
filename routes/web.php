@@ -32,5 +32,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('master-mapel', App\Http\Controllers\Admin\Master\DataMapel::class)->name('admin.master.mapel');
     Route::get('master-pembelajaran', App\Http\Controllers\Admin\Master\DataPembelajaran::class)->name('admin.master.pembelajaran');
     //Kesiswaan
-    Route::get('master-daftar-nama', App\Http\Controllers\Admin\Kesiswaan\DaftarNama::class)->name('admin.kesiswaan.daftarnama');
+    Route::get('kesiswaan-daftar-nama', App\Http\Controllers\Admin\Kesiswaan\DaftarNama::class)->name('admin.kesiswaan.daftarnama');
 });
