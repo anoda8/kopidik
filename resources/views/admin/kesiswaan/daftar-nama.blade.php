@@ -73,6 +73,7 @@
                                 <th class="text-center">NISN</th>
                                 <th class="text-center">JK</th>
                                 <th class="text-center">Urut</th>
+                                <th class="text-center">RTS</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -86,6 +87,9 @@
                                         <td>
                                             <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $key }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
                                         </td>
+                                        <td>
+                                            {{ $savedRombel[$key]['urut'] }}
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -98,7 +102,7 @@
                     <div class="alert alert-danger" role="alert">
                         {{$error_message}}
                     </div>
-                    @endif                    
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -19,11 +19,13 @@ class DaftarNama extends Component
     public $urut = [];
     public $error_message = null;
 
+    public $savedRombel = [];
+
     protected $listeners = ['openListSiswa'];
 
     public function mount()
     {
-        
+
     }
 
     public function render()
@@ -45,9 +47,10 @@ class DaftarNama extends Component
 
     public function openListSiswa($rombelId, $namaKelas)
     {
-        $list_nama = DataPesertaDidik::select(['nama', 'nipd', 'nisn', 'jenis_kelamin', 'rombongan_belajar_id'])
+        $list_nama = DataPesertaDidik::select(['nama', 'nipd', 'nisn', 'jenis_kelamin', 'rombongan_belajar_id', 'peserta_didik_id'])
         ->where('rombongan_belajar_id', $rombelId)->orderBy('nama', 'ASC')
         ->get();
+        $this->savedRombel = DataAnggotaRombel::where('anggota_rombel_id', $rombelId)->get()->toArray();
         $this->list_nama = $list_nama->toArray();
         $this->kelas_selected = $namaKelas;
         $this->urut = range(1, ($list_nama->count()));
@@ -66,7 +69,9 @@ class DaftarNama extends Component
                 $this->error_message = "Ada nomor urut diluar jumlah siswa.";
             }else{
                 foreach($this->list_nama as $key => $listNama){
-                    DataAnggotaRombel::where('anggota_rombel_id', $listNama['rombongan_belajar_id'])->update(['urut' => $this->urut[$key]]);
+                    DataAnggotaRombel::where('anggota_rombel_id', $listNama['rombongan_belajar_id'])
+                    ->where('peserta_didik_id', $listNama['peserta_didik_id'])
+                    ->update(['urut' => $this->urut[$key]]);
                 }
             }
         }
