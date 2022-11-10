@@ -37,7 +37,6 @@
                                 <td>{{ $kelas->kurikulum_id_str }}</td>
                                 <td>{{ $kelas->ptk_id_str }}</td>
                                 <td class="text-center font-weight-bold" style="cursor: pointer;" wire:click="openListSiswa('{{ $kelas->rombongan_belajar_id }}', '{{ $kelas->nama }}')">
-
                                     <button type="button" class="btn btn-info btn-sm">{{ $kelas->anggota_rombel->count() }}</button>
                                 </td>
                                 <td class="text-center">
@@ -55,7 +54,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modal-list-siswa" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="modal-list-siswa" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -85,7 +84,7 @@
                                         <td class="text-center">{{ $listNama['nisn'] }}</td>
                                         <td class="text-center">{{ $listNama['jenis_kelamin'] }}</td>
                                         <td>
-                                            <input type="text" style="direction: rtl;" value="{{ $key + 1 }}" size="1" height="40" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
+                                            <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $key }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
                                         </td>
                                     </tr>
                                 @empty
@@ -95,10 +94,15 @@
                                 @endforelse
                             </tbody>
                     </table>
+                    @if ($error_message)
+                    <div class="alert alert-danger" role="alert">
+                        {{$error_message}}
+                    </div>
+                    @endif                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-primary" wire:click="simpanUrut">Simpan Nomor Urut</button>
                 </div>
             </div>
         </div>
