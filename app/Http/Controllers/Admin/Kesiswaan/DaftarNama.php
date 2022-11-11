@@ -16,12 +16,11 @@ class DaftarNama extends Component
     public $perpage = 10;
     public $list_nama = [];
     public $kelas_selected = '';
+    public $rombel_id_selected = null;
     public $urut = [];
     public $error_message = null;
 
-    public $savedRombel = [];
-
-    protected $listeners = ['openListSiswa'];
+    protected $listeners = ['openListSiswa', 'simpanUrut'];
 
     public function mount()
     {
@@ -47,21 +46,26 @@ class DaftarNama extends Component
 
     public function openListSiswa($rombelId, $namaKelas)
     {
-        $list_nama = DataPesertaDidik::select(['nama', 'nipd', 'nisn', 'jenis_kelamin', 'rombongan_belajar_id', 'peserta_didik_id'])
-        ->where('rombongan_belajar_id', $rombelId)->orderBy('nama', 'ASC')
-        ->get();
-        $this->savedRombel = DataAnggotaRombel::where('anggota_rombel_id', $rombelId)->get()->toArray();
-        $this->list_nama = $list_nama->toArray();
+        $this->rombel_id_selected = $rombelId;
+        $this->getRombel($rombelId);
         $this->kelas_selected = $namaKelas;
-        $this->urut = range(1, ($list_nama->count()));
+        $this->urut = range(1, count($this->list_nama));
         $this->dispatchBrowserEvent('openModalListSiswa');
+    }
+
+    public function getRombel($rombelId)
+    {
+        $this->list_nama = DataAnggotaRombel::where('erp_anggota_rombel.anggota_rombel_id', $rombelId)
+        ->join('erp_data_peserta_didik', 'erp_anggota_rombel.peserta_didik_id', '=', 'erp_data_peserta_didik.peserta_didik_id')
+        ->select(['nama', 'nipd', 'nisn', 'jenis_kelamin', 'urut', 'erp_data_peserta_didik.rombongan_belajar_id', 'erp_data_peserta_didik.peserta_didik_id'])
+        ->orderBy('urut', 'ASC')->get()->toArray();
     }
 
     public function simpanUrut()
     {
         $this->error_message = null;
         $this->procUrut();
-        $newList = [];
+        // $this->procUrut();
         if(count($this->urut) > count(array_unique($this->urut))){
             $this->error_message = "Ada nomor urut yang sama, periksa kembali nomor urut.";
         }else{
@@ -74,6 +78,7 @@ class DaftarNama extends Component
                     ->update(['urut' => $this->urut[$key]]);
                 }
             }
+            $this->getRombel($this->rombel_id_selected);
         }
     }
 

@@ -73,7 +73,6 @@
                                 <th class="text-center">NISN</th>
                                 <th class="text-center">JK</th>
                                 <th class="text-center">Urut</th>
-                                <th class="text-center">RTS</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,10 +84,7 @@
                                         <td class="text-center">{{ $listNama['nisn'] }}</td>
                                         <td class="text-center">{{ $listNama['jenis_kelamin'] }}</td>
                                         <td>
-                                            <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $key }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
-                                        </td>
-                                        <td>
-                                            {{ $savedRombel[$key]['urut'] }}
+                                            <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $listNama['urut'] - 1 }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
                                         </td>
                                     </tr>
                                 @empty

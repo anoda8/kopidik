@@ -12,4 +12,9 @@ class DataAnggotaRombel extends Model
     protected $guarded = ['id'];
 
     protected $table = 'erp_anggota_rombel';
+
+    public function pd()
+    {
+        return $this->belongsTo(DataPesertaDidik::class, 'peserta_didik_id');
+    }
 }
