@@ -66,7 +66,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-end mb-2">
-                            <a href="kesiswaan-cetak-daftar-nama/{{ $rombel_id_selected }}" target="_blank" class="btn btn-info btn-sm">
+                            <a href="kesiswaan-cetak-daftar-nama/{{ $rombel_id_selected }}" target="print_frame" class="btn btn-info btn-sm">
                                 <i class="fa fa-download"></i>
                                 Unduh
                             </a>
