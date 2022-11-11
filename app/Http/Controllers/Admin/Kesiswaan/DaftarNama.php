@@ -19,6 +19,7 @@ class DaftarNama extends Component
     public $rombel_id_selected = null;
     public $urut = [];
     public $error_message = null;
+    public $success_message = null;
 
     protected $listeners = ['openListSiswa', 'simpanUrut'];
 
@@ -79,6 +80,7 @@ class DaftarNama extends Component
                 }
             }
             $this->getRombel($this->rombel_id_selected);
+            $this->success_message = "Nomor urut tersimpan !";
         }
     }
 

@@ -64,6 +64,14 @@
                         </button>
                 </div>
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-end mb-2">
+                            <a href="kesiswaan-cetak-daftar-nama/{{ $rombel_id_selected }}" target="_blank" class="btn btn-info btn-sm">
+                                <i class="fa fa-download"></i>
+                                Unduh
+                            </a>
+                        </div>
+                    </div>
                     <table class="table table-striped table-condensed table-bordered">
                         <thead>
                             <tr class="bg-dark">
@@ -76,6 +84,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @php ($urut_kosong = true)
                                 @forelse ($list_nama as $key => $listNama)
                                     <tr>
                                         <td class="text-center">{{ $key + 1 }}</td>
@@ -84,7 +93,13 @@
                                         <td class="text-center">{{ $listNama['nisn'] }}</td>
                                         <td class="text-center">{{ $listNama['jenis_kelamin'] }}</td>
                                         <td>
-                                            <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $listNama['urut'] - 1 }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
+                                            @if ($listNama['urut'] == null)
+                                                @php ($error_message = "Nomor urut belum tersimpan !")
+                                                <input type="number" style="direction: rtl;width:5em;background-color:pink;" wire:model="urut.{{ $key }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
+                                            @else
+                                                @php ($urut_kosong = false)
+                                                <input type="number" style="direction: rtl;width:5em;" wire:model="urut.{{ $listNama['urut'] - 1 }}" size="1" class="form-control input-sm" name="" id="" aria-describedby="helpId" placeholder="">
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty
@@ -97,15 +112,37 @@
                     @if ($error_message)
                     <div class="alert alert-danger" role="alert">
                         {{$error_message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if ($success_message)
+                    <div class="alert alert-success" role="alert">
+                        {{$success_message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     @endif
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" wire:click="simpanUrut">Simpan Nomor Urut</button>
+                <div class="modal-footer row">
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <div class="loader-static" wire:loading wire:target="simpanUrut" >
+                            <div class="inner one"></div>
+                            <div class="inner two"></div>
+                            <div class="inner three"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 d-flex justify-content-end">
+                        {{-- <div class="justify-item"></div> --}}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary" wire:click="simpanUrut">Simpan Urut</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     @section('scripts')
