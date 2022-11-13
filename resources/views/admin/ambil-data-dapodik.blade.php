@@ -71,7 +71,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="card-title">Data Kelas</h4>
+                        <h4 class="card-title">Data Rombongan Belajar</h4>
                         <p class="card-text">{{ $results_counter['kelas'] ?? "0" }}{{ isset($results_counter['kelas']) ? " data kelas..." : "" }}</p>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">

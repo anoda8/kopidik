@@ -24,7 +24,6 @@
                             <th class="text-center">Kurikulum</th>
                             <th class="text-center">Wali Kelas</th>
                             <th class="text-center">Jml Siswa</th>
-                            <th class="text-center">Cetak</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,11 +37,6 @@
                                 <td>{{ $kelas->ptk_id_str }}</td>
                                 <td class="text-center font-weight-bold" style="cursor: pointer;" wire:click="openListSiswa('{{ $kelas->rombongan_belajar_id }}', '{{ $kelas->nama }}')">
                                     <button type="button" class="btn btn-info btn-sm">{{ $kelas->anggota_rombel->count() }}</button>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-print"></i>
-                                    </button>
                                 </td>
                             </tr>
                             @endforeach
