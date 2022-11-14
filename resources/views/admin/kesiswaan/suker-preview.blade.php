@@ -64,6 +64,12 @@
                             </tr>
                         </tbody>
                 </table>
+                <div class="row d-flex justify-content-end mt-3 mr-3">
+                    <a href="" target="_blank" type="button" class="btn btn-info">
+                        <i class="fa fa-print"></i>&NonBreakingSpace;
+                        Cetak
+                    </a>
+                </div>
             </div>
         </div>
     </div>
