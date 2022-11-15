@@ -36,4 +36,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('kesiswaan-cetak-daftar-nama/{rombelId}', [App\Http\Controllers\Admin\Cetak\DaftarNamaPesertaDidik::class, 'cetak'])->name('admin.kesiswaan.cetakdaftarnama');
     Route::get('kesiswaan-suker', App\Http\Controllers\Admin\Kesiswaan\SukerPesertaDidik::class)->name('admin.kesiswaan.suker');
     Route::get('kesiswaan-suker-preview/{pesertadidikId}/{sukerTipe}', App\Http\Controllers\Admin\Kesiswaan\SukerPreview::class)->name('admin.kesiswaan.sukerpreview');
+    Route::get('kesiswaan-suker-cetak/{pesertadidikId}/{sukerTipe}', [App\Http\Controllers\Admin\Cetak\SukerPesertaDidik::class, 'cetak'])->name('admin.kesiswaan.sukercetak');
 });

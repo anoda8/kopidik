@@ -8,8 +8,8 @@ use Barryvdh\DomPDF\PDF;
 
 class SukerPesertaDidik extends Controller
 {
-    public function cetak()
+    public function cetak($pesertadidikId, $sukerTipe)
     {
-
+        return view('admin.cetak.suker-benar2');
     }
 }

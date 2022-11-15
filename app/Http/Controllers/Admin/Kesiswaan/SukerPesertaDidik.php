@@ -16,6 +16,7 @@ class SukerPesertaDidik extends Component
     public $kata_kunci;
     public $perpage = 10;
     public $preview_mode = false;
+    public $status_simpan = false;
 
     public $listeners = ['previewShow'];
 
@@ -37,7 +38,15 @@ class SukerPesertaDidik extends Component
     public function updatedKop()
     {
         $this->validate([
-            'kop' => 'image|max:2048'
+            'kop' => 'image|max:2048|dimensions:width=716,height=172'
         ]);
+    }
+
+    public function saveKop()
+    {
+        if($this->kop){
+            $this->kop->storeAs('public/images/kop-sekolah/', 'kop.'.$this->kop->extension());
+            $this->status_simpan = true;
+        }
     }
 }
