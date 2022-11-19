@@ -2,6 +2,12 @@
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <section class="content">
     <div class="container-fluid mt-4 p-3">
+        <div class="card text-white bg-dark">
+          <div class="card-body">
+            <h3>KOPIDIK</h3>
+            <p class="card-text">Salinan Data DAPODIK</p>
+          </div>
+        </div>
         <div class="card p-2">
             <div class="row">
                 <div class="col-lg-3 col-6">
@@ -50,14 +56,14 @@
                 </div>
 
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-default">
                         <div class="row d-flex justify-content-between p-3">
                             <div>
-                                <h3>150</h3>
-                                <p>Peserta Didik</p>
+                                <h3>0</h3>
+                                <p>Underconstruction</p>
                             </div>
                             <div>
-                                <i class="fa fa-4x fa-users"></i>
+                                <i class="fa fa-4x fa-exclamation-triangle"></i>
                             </div>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>

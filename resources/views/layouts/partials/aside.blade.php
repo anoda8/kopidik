@@ -20,9 +20,7 @@
     <!-- SidebarSearch Form -->
     <div class="form-inline">
         <div class="input-group mb-2" data-widget="sidebar-select">
-              <select class="form-control form-control-sidebar" name="" id="">
-                <option>Tahun Pelajaran</option>
-              </select>
+            <livewire:component.select-option-semester />
         </div>
         <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -57,25 +55,25 @@
         </li>
         <li class="nav-item {{request()->is('admin/master*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{request()->is('admin/master*') ? 'active' : ''}}">
-            <i class="nav-icon fas fa-edit"></i>
-            <p>
-                Master Data Dapodik
-                <i class="fas fa-angle-left right"></i>
-            </p>
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                    Master Data Dapodik
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{route('admin.master.sekolah')}}" class="nav-link {{request()->is('admin/master-sekolah') ? 'active' : ''}}">
-                    <i class="fa fa-database nav-icon"></i>
-                    <p>Data Sekolah</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{route('admin.master.guru')}}" class="nav-link {{request()->is('admin/master-guru') ? 'active' : ''}}">
-                    <i class="fa fa-database nav-icon"></i>
-                    <p>Data Guru</p>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.master.sekolah')}}" class="nav-link {{request()->is('admin/master-sekolah') ? 'active' : ''}}">
+                        <i class="fa fa-database nav-icon"></i>
+                        <p>Data Sekolah</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.master.guru')}}" class="nav-link {{request()->is('admin/master-guru') ? 'active' : ''}}">
+                        <i class="fa fa-database nav-icon"></i>
+                        <p>Data Guru</p>
+                    </a>
+                </li>
             <li class="nav-item">
                 <a href="{{route('admin.master.pesertadidik')}}" class="nav-link {{request()->is('admin/master-peserta-didik') ? 'active' : ''}}">
                     <i class="fa fa-database nav-icon"></i>
@@ -120,6 +118,12 @@
                 <a href="{{route('admin.kesiswaan.suker')}}" class="nav-link {{request()->is('admin/kesiswaan-suker*') ? 'active' : ''}}">
                     <i class="fa fa-envelope nav-icon"></i>
                     <p>Surat Keterangan</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="fa fa-database nav-icon"></i>
+                    <p>Backup / Restore</p>
                 </a>
             </li>
         </li>

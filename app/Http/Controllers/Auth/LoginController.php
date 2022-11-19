@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 
 class LoginController extends Controller
 {
@@ -40,8 +41,30 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout(Request $request)
+    {
+        //Added
+        $request->session()->forget('semester');
+
+        //Original
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
+    }
+
     protected function authenticated(Request $request, $user)
     {
+        $request->session()->put('semester', $request['semester']);
         if($user->hasRole('super')){
             $this->redirectTo = 'admin/dashboard';
         }
@@ -57,7 +80,7 @@ class LoginController extends Controller
         $currentYear = date("Y");
         $semesters = [];
 
-        for ($i=$currentYear+2; $i >= $currentYear; $i--) {
+        for ($i=$currentYear+1; $i >= ($currentYear - 2); $i--) {
             $semesters[$i."2"] = $i."/".($i+1)." Semester Genap";
             $semesters[$i."1"] = $i."/".($i+1)." Semester Ganjil";
         }
