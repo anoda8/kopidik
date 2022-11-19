@@ -40,6 +40,17 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="tahun_pelajaran" class="col-md-4 col-form-label text-md-end">Tahun Pelajaran</label>
+                            <div class="col-md-6">
+                                  <select class="form-control" name="tahun_pelajaran" id="">
+                                    @foreach ($semesters as $key => $semester)
+                                        <option value="{{ $key }}">{{ $semester }}</option>
+                                    @endforeach
+                                  </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

@@ -46,4 +46,22 @@ class LoginController extends Controller
             $this->redirectTo = 'admin/dashboard';
         }
     }
+
+    public function showLoginForm()
+    {
+        return view('auth.login', ['semesters' => $this->generateSemester()]);
+    }
+
+    public function generateSemester()
+    {
+        $currentYear = date("Y");
+        $semesters = [];
+
+        for ($i=$currentYear+2; $i >= $currentYear; $i--) {
+            $semesters[$i."2"] = $i."/".($i+1)." Semester Genap";
+            $semesters[$i."1"] = $i."/".($i+1)." Semester Ganjil";
+        }
+
+        return $semesters;
+    }
 }
