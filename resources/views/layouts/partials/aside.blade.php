@@ -121,7 +121,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('admin.backup-restore') }}" class="nav-link {{request()->is('admin/backup-restore*') ? 'active' : ''}}" >
                     <i class="fa fa-database nav-icon"></i>
                     <p>Backup / Restore</p>
                 </a>
