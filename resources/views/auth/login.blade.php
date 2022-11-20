@@ -3,11 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    <div class="row">
+                        <img src="{{ asset('images/logo_kopidik.jpg') }}" alt="logo kopidik" class="img-fluid mb-4">
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

@@ -24,7 +24,6 @@
                                 <th class="text-center">JK</th>
                                 <th class="text-center">Jenis PTK</th>
                                 <th class="text-center">Status</th>
-                                <th class="text-center" colspan="2">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,8 +36,6 @@
                                         <td class="text-center">{{ $guru->jenis_kelamin }}</td>
                                         <td>{{ $guru->jenis_ptk_id_str }}</td>
                                         <td class="text-center">Aktif</td>
-                                        <td class="text-center">Edit</td>
-                                        <td class="text-center">Status</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -49,7 +49,7 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyleft &copy; 2014-2021 Kopidik All rights reserved.
+    <strong>Copyleft &copy; 2014-2021 Kopidik v0.1 All rights reserved.
   </footer>
 
 </div>
