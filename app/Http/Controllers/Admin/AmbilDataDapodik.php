@@ -13,6 +13,8 @@ class AmbilDataDapodik extends Component
     public $results_counter = [];
     public $data_holder = [];
     public $current_item_data = null;
+    public $semesters = null;
+    public $selected_semester = null;
 
     protected $item_data = [
         'sekolah' => "getSekolah",
@@ -23,12 +25,14 @@ class AmbilDataDapodik extends Component
 
     public function mount()
     {
+        $this->semesters = $this->generateSemester();
         $this->dapodikSync = DapodikSync::get()->first();
     }
 
     public function render()
     {
-        return view('admin.ambil-data-dapodik');
+        $semesters = $this->generateSemester();
+        return view('admin.ambil-data-dapodik', ['semesters' => $semesters]);
     }
 
     public function cekData($item_data)
@@ -187,5 +191,18 @@ class AmbilDataDapodik extends Component
             ], $innerHolder);
         }
         $this->clearState();
+    }
+
+    public function generateSemester()
+    {
+        $currentYear = date("Y");
+        $semesters = [];
+
+        for ($i=$currentYear+1; $i >= ($currentYear - 2); $i--) {
+            $semesters[$i."2"] = $i."/".($i+1)." Semester Genap";
+            $semesters[$i."1"] = $i."/".($i+1)." Semester Ganjil";
+        }
+
+        return $semesters;
     }
 }

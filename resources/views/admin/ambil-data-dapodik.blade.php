@@ -1,6 +1,19 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     <div class="pt-3">
+        <div class="card ml-3 mr-3 mb-3">
+            <div class="card-body text-center">
+                <div class="form-group">
+                    {{ $selected_semester }}
+                    <select class="form-control w-25" wire:model="selected_semester">
+                        <option>-- Pilih Semester --</option>
+                        @foreach ($semesters as $key => $semester)
+                            <option value="{{ $key }}">{{ $semester }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="card {{ isset($results_counter['sekolah']) ? 'bg-light' : 'bg-dark' }} text-left ml-3 mr-3 mb-3">
             <div class="card-body">
                 <div class="row">
