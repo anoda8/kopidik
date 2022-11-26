@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('ambildata', App\Http\Controllers\Admin\AmbilDataDapodik::class)->name('admin.ambildata');
     //Master
     Route::get('master-sekolah', App\Http\Controllers\Admin\Master\DataSekolah::class)->name('admin.master.sekolah');
+    Route::get('master-prasarana', App\Http\Controllers\Admin\Master\DataPrasarana::class)->name('admin.master.prasarana');
     Route::get('master-guru', App\Http\Controllers\Admin\Master\DataGuru::class)->name('admin.master.guru');
     Route::get('master-peserta-didik', App\Http\Controllers\Admin\Master\DataPesertaDidik::class)->name('admin.master.pesertadidik');
     Route::get('master-kelas', App\Http\Controllers\Admin\Master\DataKelas::class)->name('admin.master.kelas');

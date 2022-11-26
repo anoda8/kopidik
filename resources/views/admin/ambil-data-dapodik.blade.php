@@ -3,15 +3,22 @@
     <div class="pt-3">
         <div class="card ml-3 mr-3 mb-3">
             <div class="card-body text-center">
-                <div class="form-group">
-                    {{ $selected_semester }}
-                    <select class="form-control w-25" wire:model="selected_semester">
-                        <option>-- Pilih Semester --</option>
-                        @foreach ($semesters as $key => $semester)
-                            <option value="{{ $key }}">{{ $semester }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <div class="col-md-5 p-0 m-0">
+                        <div class="form-group">
+                            <select class="form-control w-75" wire:model="selected_semester">
+                                <option>-- Pilih Semester --</option>
+                                @foreach ($semesters as $key => $semester)
+                                    <option value="{{ $key }}">{{ $semester }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-7 m-0 p-0">
+                       {!! $selected_semester != null ? "Unduh Data Dapodik untuk tahun pelajaran <br/><b>".$this->generateSemester($selected_semester)."</b>" : "" !!}
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="card {{ isset($results_counter['sekolah']) ? 'bg-light' : 'bg-dark' }} text-left ml-3 mr-3 mb-3">
@@ -89,6 +96,28 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
                         <a name="" id="" class="btn btn-info mr-3" wire:click.prevent="cekData('kelas')" role="button">
+                            <i class="fa fa-laptop"></i>&nbsp;
+                            Cek Data
+                        </a>
+                        <a name="" id="" class="btn btn-primary" wire:click.prevent="import" role="button">
+                            <i class="fas fa-download"></i>&nbsp;
+                            Unduh
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-1">
+        <div class="card {{ isset($results_counter['prasarana']) ? 'bg-light' : 'bg-dark' }} text-left ml-3 mr-3 mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="card-title">Data Prasarana</h4>
+                        <p class="card-text">{{ $results_counter['prasarana'] ?? "0" }}{{ isset($results_counter['prasarana']) ? " data prasarana..." : "" }}</p>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a name="" id="" class="btn btn-info mr-3" wire:click.prevent="cekData('prasarana')" role="button">
                             <i class="fa fa-laptop"></i>&nbsp;
                             Cek Data
                         </a>

@@ -21,6 +21,7 @@ class AmbilDataDapodik extends Component
         'guru' => "getGtk",
         'siswa' => "getPesertaDidik",
         'kelas' => "getRombonganBelajar",
+        'prasarana' => "getPrasarana",
     ];
 
     public function mount()
@@ -53,6 +54,9 @@ class AmbilDataDapodik extends Component
                     break;
                 case 'kelas':
                     $this->getKelas($collection, $item_data);
+                    break;
+                case 'prasarana':
+                    $this->getPrasarana($collection, $item_data);
                     break;
                 default:
                     $this->results_counter[$item_data] = $collection->results;
@@ -88,6 +92,13 @@ class AmbilDataDapodik extends Component
         $this->results_counter[$item_data] = $this->data_holder->count();
     }
 
+    public function getPrasarana($collection, $item_data)
+    {
+        $this->data_holder = collect($collection->rows);
+        dd($this->data_holder);
+        $this->results_counter[$item_data] = $this->data_holder->count();
+    }
+
     public function import()
     {
         if(count($this->data_holder) > 0){
@@ -103,6 +114,9 @@ class AmbilDataDapodik extends Component
                     break;
                 case 'kelas':
                     $this->importKelas();
+                    break;
+                case 'prasarana':
+                    $this->importPrasarana();
                     break;
                 default:
                     # code...
@@ -193,16 +207,23 @@ class AmbilDataDapodik extends Component
         $this->clearState();
     }
 
-    public function generateSemester()
+    public function importPrasarana()
+    {
+        dd($this->data_holder);
+    }
+
+    public function generateSemester($key = null)
     {
         $currentYear = date("Y");
         $semesters = [];
 
         for ($i=$currentYear+1; $i >= ($currentYear - 2); $i--) {
             $semesters[$i."2"] = $i."/".($i+1)." Semester Genap";
-            $semesters[$i."1"] = $i."/".($i+1)." Semester Ganjil";
+            $semesters[$i."1"] = $i."/".($i+1)." Semester Gasal";
         }
-
+        if($key != null){
+            return $semesters[$key];
+        }
         return $semesters;
     }
 }

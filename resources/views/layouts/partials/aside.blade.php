@@ -69,17 +69,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.master.prasarana')}}" class="nav-link {{request()->is('admin/master-prasarana') ? 'active' : ''}}">
+                        <i class="fa fa-database nav-icon"></i>
+                        <p>Data Prasarana</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.master.guru')}}" class="nav-link {{request()->is('admin/master-guru') ? 'active' : ''}}">
                         <i class="fa fa-database nav-icon"></i>
                         <p>Data Guru</p>
                     </a>
                 </li>
-            <li class="nav-item">
-                <a href="{{route('admin.master.pesertadidik')}}" class="nav-link {{request()->is('admin/master-peserta-didik') ? 'active' : ''}}">
-                    <i class="fa fa-database nav-icon"></i>
-                    <p>Data Peserta Didik</p>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.master.pesertadidik')}}" class="nav-link {{request()->is('admin/master-peserta-didik') ? 'active' : ''}}">
+                        <i class="fa fa-database nav-icon"></i>
+                        <p>Data Peserta Didik</p>
+                    </a>
+                </li>
             <li class="nav-item">
                 <a href="{{route('admin.master.kelas')}}" class="nav-link {{request()->is('admin/master-kelas') ? 'active' : ''}}">
                     <i class="fa fa-database nav-icon"></i>
