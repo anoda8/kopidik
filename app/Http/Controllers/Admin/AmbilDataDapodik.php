@@ -95,7 +95,7 @@ class AmbilDataDapodik extends Component
     public function getPrasarana($collection, $item_data)
     {
         $this->data_holder = collect($collection->rows);
-        dd($this->data_holder);
+        // dd($this->data_holder);
         $this->results_counter[$item_data] = $this->data_holder->count();
     }
 
@@ -209,7 +209,9 @@ class AmbilDataDapodik extends Component
 
     public function importPrasarana()
     {
-        dd($this->data_holder);
+        foreach ($this->data_holder as $key => $tanah) {
+            dd($tanah['bangunan']);
+        }
     }
 
     public function generateSemester($key = null)
