@@ -209,8 +209,23 @@ class AmbilDataDapodik extends Component
 
     public function importPrasarana()
     {
-        foreach ($this->data_holder as $key => $tanah) {
-            dd($tanah['bangunan']);
+        foreach ($this->data_holder as $tanah) {
+            foreach($tanah as $key => $tnh){
+                if($key == 'bangunan'){
+                    foreach($tnh as $bangunan){
+                        foreach($bangunan as $key2 => $bgn){
+                            if($key2 == 'ruang'){
+                                foreach ($bgn as $ruang) {
+                                    $ruang['id_bangunan'] = $bangunan['id_bangunan'];
+                                    \App\Models\PrasaranaRuang::updateOrCreate([
+                                        'id_ruang' => $ruang['id_ruang']
+                                    ], $ruang);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
