@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('dashboard', App\Http\Controllers\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('dapodiksync', App\Http\Controllers\Admin\DapodikSync::class)->name('admin.dapodiksync');

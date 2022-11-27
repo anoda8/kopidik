@@ -21,7 +21,7 @@ class DataKelas extends Component
         })->where(function($query) use ($kataKunci){
             $query->where('nama', 'LIKE', $kataKunci)->orWhere('jurusan_id_str', 'LIKE', $kataKunci)
             ->orWhere('ptk_id_str', 'LIKE', $kataKunci);
-        })->orderBy('nama', 'ASC');
+        })->with('anggota_rombel')->orderBy('nama', 'ASC');
         if($this->kata_kunci != null){
             $kelases = $kelases->get();
         }else{

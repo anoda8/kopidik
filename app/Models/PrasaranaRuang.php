@@ -12,4 +12,9 @@ class PrasaranaRuang extends Model
     protected $guarded = ['id'];
 
     protected $table = 'erp_prasarana_ruang';
+
+    public function bangunan()
+    {
+        return $this->belongsTo(PrasaranaBangunan::class, 'id_bangunan');
+    }
 }

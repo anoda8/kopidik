@@ -16,27 +16,27 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-condensed table-bordered">
                     <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kurikulum</th>
-                            <th>Nama Kelas</th>
-                            <th>Tingkat</th>
-                            <th>Jurusan</th>
-                            <th>Wali Kelas</th>
-                            <th>Jml Siswa</th>
-                            <th>Opsi</th>
+                        <tr class="bg-dark">
+                            <th class="text-center align-middle">No</th>
+                            <th class="text-center align-middle">Kurikulum</th>
+                            <th class="text-center align-middle">Nama Kelas</th>
+                            <th class="text-center align-middle">Tingkat</th>
+                            <th class="text-center align-middle">Jurusan</th>
+                            <th class="text-center align-middle">Wali Kelas</th>
+                            <th class="text-center align-middle">Jml Siswa</th>
+                            <th class="text-center align-middle">Opsi</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach ($kelases as $index => $kelas)
                             <tr>
-                                <td>{{ $kata_kunci == null ? ((($kelases->currentPage() - 1) * $perpage) + $loop->iteration) : $loop->iteration }}</td>
+                                <td class="text-center">{{ $kata_kunci == null ? ((($kelases->currentPage() - 1) * $perpage) + $loop->iteration) : $loop->iteration }}</td>
                                 <td>{{ $kelas->kurikulum_id_str }}</td>
-                                <td>{{ $kelas->nama }}</td>
-                                <td>{{ $kelas->tingkat_pendidikan_id_str }}</td>
+                                <td class="text-center">{{ $kelas->nama }}</td>
+                                <td class="text-center">{{ $kelas->tingkat_pendidikan_id_str }}</td>
                                 <td>{{ $kelas->jurusan_id_str }}</td>
                                 <td>{{ $kelas->ptk_id_str }}</td>
-                                <td></td>
+                                <td class="text-center">{{ $kelas->anggota_rombel->count() }}</td>
                                 <td></td>
                             </tr>
                             @endforeach
