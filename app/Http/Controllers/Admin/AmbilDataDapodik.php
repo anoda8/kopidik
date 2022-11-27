@@ -223,10 +223,18 @@ class AmbilDataDapodik extends Component
                                 }
                             }
                         }
+                        $bangunan['id_tanah'] = $tanah['id_tanah'];
+                        \App\Models\PrasaranaBangunan::updateOrCreate([
+                            'id_bangunan' => $bangunan['id_bangunan']
+                        ], $bangunan);
                     }
                 }
             }
+            \App\Models\PrasaranaTanah::updateOrCreate([
+                'id_tanah' => $tanah['id_tanah']
+            ], $tanah);
         }
+        $this->clearState();
     }
 
     public function generateSemester($key = null)
