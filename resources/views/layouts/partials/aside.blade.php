@@ -112,6 +112,14 @@
             </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.users.kopidik') }}" class="nav-link {{ request()->is('admin/users-kopidik') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    User Kopidik
+                </p>
+            </a>
+        </li>
         <li class="nav-header">LAYANAN</li>
         <li class="nav-item {{request()->is('admin/statistik-peserta-didik*') ? 'menu-open' : ''}}">
             <li class="nav-item">

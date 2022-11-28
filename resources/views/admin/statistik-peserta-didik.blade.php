@@ -10,13 +10,13 @@
                     <div class="d-flex justify-content-center">
                         <div style="height: 300px;width: 300px;">
                             <canvas id="chartJenisKelamin"></canvas>
-                            
-                        </div> 
+
+                        </div>
                     </div>
                     Laki-laki :<b>{{$peserdik->where('jenis_kelamin', 'L')->get()->count()}}</b><br/>
                     Perempuan :<b>{{$peserdik->where('jenis_kelamin', 'P')->get()->count()}} </b><br/>
-                    Total : <b>{{$peserdik->get()->count()}}</b>          
-                </div>                  
+                    Total : <b>{{$peserdik->get()->count()}}</b>
+                </div>
             </div>
             <div class="card">
                 <div class="card-header">
@@ -60,8 +60,8 @@
                     label: 'Berdasarkan Jenis Kelamin',
                     data: [{{$peserdik->where('jenis_kelamin', 'L')->get()->count()}}, {{$peserdik->where('jenis_kelamin', 'P')->get()->count()}}],
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
+                        'rgb(255, 99, 132)',
                     ],
                     hoverOffset: 4
                 }]
@@ -69,7 +69,7 @@
         });
 
         const ctxUsia = document.getElementById('chartUsia');
-        
+
         new Chart(ctxUsia, {
             type: 'bar',
             data: {
@@ -140,21 +140,21 @@
                             {{ $dataAgama['islam']['L'] }},
                             {{ $dataAgama['kristen']['L'] }},
                             {{ $dataAgama['katholik']['L'] }},
-                            {{ $dataAgama['hindu']['L'] }},                            
-                            {{ $dataAgama['budha']['L'] }},                            
-                            {{ $dataAgama['konghucu']['L'] }},                            
+                            {{ $dataAgama['hindu']['L'] }},
+                            {{ $dataAgama['budha']['L'] }},
+                            {{ $dataAgama['konghucu']['L'] }},
                         ],
                         backgroundColor: '#1e81b0'
                     },
                     {
                         label: 'Perempuan',
                         data: [
-                            {{ $dataAgama['islam']['P'] }},                            
-                            {{ $dataAgama['kristen']['P'] }},                            
-                            {{ $dataAgama['katholik']['P'] }},                            
-                            {{ $dataAgama['hindu']['P'] }},                            
-                            {{ $dataAgama['budha']['P'] }},                            
-                            {{ $dataAgama['konghucu']['P'] }},                            
+                            {{ $dataAgama['islam']['P'] }},
+                            {{ $dataAgama['kristen']['P'] }},
+                            {{ $dataAgama['katholik']['P'] }},
+                            {{ $dataAgama['hindu']['P'] }},
+                            {{ $dataAgama['budha']['P'] }},
+                            {{ $dataAgama['konghucu']['P'] }},
                         ],
                         backgroundColor: '#873e23'
                     },
@@ -190,29 +190,31 @@
                         data: [
                             {{ $dataTingkat['10']['L'] }},
                             {{ $dataTingkat['11']['L'] }},
-                            {{ $dataTingkat['12']['L'] }},                                                    
+                            {{ $dataTingkat['12']['L'] }},
                         ],
                         backgroundColor: '#1e81b0'
                     },
                     {
                         label: 'Perempuan',
                         data: [
-                            {{ $dataTingkat['10']['P'] }},                            
-                            {{ $dataTingkat['11']['P'] }},                            
-                            {{ $dataTingkat['12']['P'] }},                                                      
+                            {{ $dataTingkat['10']['P'] }},
+                            {{ $dataTingkat['11']['P'] }},
+                            {{ $dataTingkat['12']['P'] }},
                         ],
                         backgroundColor: '#873e23'
                     },
                 ],
                 options: {
                     responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
+                    interaction: {
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
                         },
-                        title: {
-                            display: true,
-                            text: 'Chart.js Bar Chart'
+                        y: {
+                            stacked: true
                         }
                     }
                 },
