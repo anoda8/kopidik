@@ -64,6 +64,8 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 @yield('scripts')
 @livewireScripts
 

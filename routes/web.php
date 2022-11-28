@@ -39,5 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('kesiswaan-suker-preview/{pesertadidikId}/{sukerTipe}', App\Http\Controllers\Admin\Kesiswaan\SukerPreview::class)->name('admin.kesiswaan.sukerpreview');
     Route::get('kesiswaan-suker-cetak/{pesertadidikId}/{sukerTipe}', [App\Http\Controllers\Admin\Cetak\SukerPesertaDidik::class, 'cetak'])->name('admin.kesiswaan.sukercetak');
     //Setting
+    Route::get('statistik-peserta-didik', App\Http\Controllers\Admin\StatistikPesertaDidik::class)->name('admin.statistik.serdik');
     Route::get('backup-restore', App\Http\Controllers\Admin\BackupRestore::class)->name('admin.backup-restore');
 });

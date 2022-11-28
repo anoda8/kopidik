@@ -113,7 +113,13 @@
             </ul>
         </li>
         <li class="nav-header">LAYANAN</li>
-        <li class="nav-item {{request()->is('admin/kesiswaan*') ? 'menu-open' : ''}}">
+        <li class="nav-item {{request()->is('admin/statistik-peserta-didik*') ? 'menu-open' : ''}}">
+            <li class="nav-item">
+                <a href="{{route('admin.statistik.serdik')}}" class="nav-link {{request()->is('admin/statistik-peserta-didik*') ? 'active' : ''}}">
+                    <i class="fa fa-chart-bar nav-icon"></i>
+                    <p>Statistik Peserta Didik</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{route('admin.kesiswaan.daftarnama')}}" class="nav-link {{request()->is('admin/kesiswaan-daftar-nama') ? 'active' : ''}}">
                     <i class="fa fa-list-ul nav-icon"></i>

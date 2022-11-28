@@ -19,6 +19,7 @@ class AmbilDataDapodik extends Component
     protected $item_data = [
         'sekolah' => "getSekolah",
         'guru' => "getGtk",
+        // 'siswa' => "getPesertaDidik",
         'siswa' => "getPesertaDidik",
         'kelas' => "getRombonganBelajar",
         'prasarana' => "getPrasarana",
@@ -82,6 +83,7 @@ class AmbilDataDapodik extends Component
     public function getSiswa($collection, $item_data)
     {
         $this->data_holder = collect($collection->rows);
+        // dd($this->data_holder);
         $this->results_counter[$item_data] = $this->data_holder->count();
     }
 
